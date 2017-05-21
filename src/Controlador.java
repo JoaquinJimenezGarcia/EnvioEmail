@@ -1,6 +1,4 @@
 import java.util.Properties;
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -14,9 +12,8 @@ import javax.mail.internet.MimeMultipart;
  * Created by garci on 21/05/2017.
  */
 public class Controlador {
-    Correo c = new Correo();
 
-    public boolean enviarCorreo(){
+    public boolean enviarCorreo(Correo c){
         try {
             Properties p = new Properties();
             p.put("mail.smtp.host","smtp.gmail.com");
@@ -28,19 +25,9 @@ public class Controlador {
             Session s = Session.getDefaultInstance(p,null);
             BodyPart texto = new MimeBodyPart();
             texto.setText(c.getMsg());
-            BodyPart adjunto = new MimeBodyPart();
-
-            if (!c.getRutaArchivo().equals("")){
-                adjunto.setDataHandler(new DataHandler(new FileDataSource(c.getRutaArchivo())));
-                adjunto.setFileName(c.getNombreArchivo());
-            }
 
             MimeMultipart m = new MimeMultipart();
             m.addBodyPart(texto);
-
-            if (!c.getRutaArchivo().equals("")){
-                m.addBodyPart(adjunto);
-            }
 
             MimeMessage mensaje = new MimeMessage(s);
             mensaje.setFrom(new InternetAddress(c.getUsuarioCorreo()));

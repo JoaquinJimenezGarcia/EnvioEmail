@@ -4,8 +4,6 @@
 public class Correo {
     private String usuarioCorreo;
     private String passwd;
-    private String rutaArchivo;
-    private String nombreArchivo;
     private String destino;
     private String asunto;
     private String msg;
@@ -24,22 +22,6 @@ public class Correo {
 
     public void setPasswd(String passwd) {
         this.passwd = passwd;
-    }
-
-    public String getRutaArchivo() {
-        return rutaArchivo;
-    }
-
-    public void setRutaArchivo(String rutaArchivo) {
-        this.rutaArchivo = rutaArchivo;
-    }
-
-    public String getNombreArchivo() {
-        return nombreArchivo;
-    }
-
-    public void setNombreArchivo(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
     }
 
     public String getDestino() {
